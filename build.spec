@@ -9,7 +9,7 @@ hiddenimports = []
 for pkg in ['uvicorn', 'starlette', 'fastapi', 'h11', 'click', 'anyio']:
     d, b, h = collect_all(pkg)
     datas += d
-    binaries += bm
+    binaries += b
     hiddenimports += h
 
 a = Analysis(
