@@ -24,27 +24,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile `
-            --hidden-import=uvicorn `
-            --hidden-import=uvicorn.main `
-            --hidden-import=uvicorn.config `
-            --hidden-import=uvicorn.logging `
-            --hidden-import=uvicorn.loops `
-            --hidden-import=uvicorn.loops.auto `
-            --hidden-import=uvicorn.loops.asyncio `
-            --hidden-import=uvicorn.protocols `
-            --hidden-import=uvicorn.protocols.http `
-            --hidden-import=uvicorn.protocols.http.auto `
-            --hidden-import=uvicorn.protocols.http.h11_impl `
-            --hidden-import=uvicorn.protocols.websockets `
-            --hidden-import=uvicorn.protocols.websockets.auto `
-            --hidden-import=uvicorn.lifespan `
-            --hidden-import=uvicorn.lifespan.on `
-            --hidden-import=uvicorn.lifespan.off `
-            --hidden-import=h11 `
-            --hidden-import=click `
-            --name MyApp `
-            run.py
+          pyinstaller build.spec
 
       - name: Package with frontend
         run: |
@@ -55,5 +35,5 @@ jobs:
       - name: Upload release
         uses: actions/upload-artifact@v4
         with:
-          name: MyApp-windows
+          name: main-windows
           path: release\
